@@ -73,7 +73,13 @@ const Presentation = () => {
             Software Engineer
           </Text>
           <Image src={images.theoremLogoType} width={400} />
-          <Notes>Let's get started!</Notes>
+          <Notes>
+            <ul>
+              <li>Hi my name is jordan</li>
+              <li>Software engineer at Theorem</li>
+              <li>I pumped to give you 10 minutes to chat about D3 and react</li>
+            </ul>
+          </Notes>
         </Slide>
 
         {/* OVERVIEW 1 */}
@@ -84,6 +90,13 @@ const Presentation = () => {
           <Heading size={4} textColor="primary">
             D3 and React together
           </Heading>
+          <Notes>
+            <ul>
+              <li>For those that dont know</li>
+              <li>D3 is a powerful tool that lets you do cool stuff with data and visualization</li>
+              <li>React need no introduction today, but just give credit where its due, React is an awesome Front End render library</li>
+            </ul>
+          </Notes>
         </Slide>
 
         {/* WonderingSlide */}
@@ -115,13 +128,17 @@ const Presentation = () => {
             Overview
           </Heading>
           <Heading size={5} textColor="tertiary">
-            We are going to look at a React wrapper component that uses hooks and lets you write D3 in a more native way
+            We are going to look at a React component that lets you write <br />D3 in a more native way
           </Heading>
           <Notes>
             <ul>
-              <li>We will talk about this stuff first</li>
-              <li>Ill show you some generic code to talk about concepts</li>
-              <li>Then i'll show you my working code</li>
+              <li>Most of the examples you will see online for D3 are written very differently from a lot of the JS we see today</li>
+              <li>You can see this on sites like http://bl.ocks.org</li>
+              <li>We as developers tend to try to force square pegs into round holes</li>
+              <li>My setup makes it easier to write D3 in the context of react</li>
+              <li>So I will show you how I do that</li>
+              <li>Ill give some high level code examples for sake of conversation</li>
+              <li>And then I'll show you my working code</li>
             </ul>
           </Notes>
         </Slide>
@@ -146,10 +163,10 @@ const Presentation = () => {
           </Appear>
           <Notes>
             <ul>
-              <li>Learning D3 is much more than a 10 minute lightning talk; its complex.  I'm currently teaching myself D3.  I can help you find some good resources if you are interested.</li>
-              <li>React is something I have been writing since 2015 and like D3 it takes time to learn</li>
+              <li>Learning D3 is much more than a 10 minute lightning talk; its complex.  I'm currently teaching myself D3.</li>
+              <li>React is something I have been learning since 2015 and you should just talk to Alex and Eve</li>
               <li>Making multiple technologies work together is our job</li>
-              <li>Ultimately I hope this intregues you a bit, that it gets you curious enough to play</li>
+              <li>Ultimately I hope this intregues and gets you curious</li>
             </ul>
           </Notes>
         </Slide>
@@ -166,8 +183,7 @@ const Presentation = () => {
           <Notes>
             <ul>
               <li>This is a scatter plot chart that maps 3 values</li>
-              <li>In this case its baseball stats: Distance, Batting average and max velocity</li>
-              <li>The color scale follows a heat scale mild to medium (bc these are just kids)</li>
+              <li>This time its baseball stats: Distance, Batting average and exit velocity of the ball after a hit</li>
             </ul>
           </Notes>
         </BetterSlide>
@@ -193,11 +209,13 @@ const Presentation = () => {
             </List>
 
             <Notes>
+              <p>Lets talk about how I did that</p>
               <ul>
-                <li>Once you write your D3 for what ever your are making you should be able to reuse that</li>
-                <li>You will obviously have to code it in a generic way though ;p</li>
-                <li>The wrapper is our D3 - React black box where the magic happens</li>
-                <li>Mapper is what preps the data and gives it to the wrapper</li>
+                <li>We have 3 parts</li>
+                <li>1. d3 render: D3 for what ever your are making, think line chart, scatter plot, etc</li>
+                <li>you should be able to reuse this if written in a generic way</li>
+                <li>2. Wrapper component: The wrapper is our D3 - React black box where the magic happens</li>
+                <li>3. Mapper is what preps the data and gives it to the wrapper</li>
               </ul>
             </Notes>
           </div>
@@ -241,11 +259,14 @@ const Presentation = () => {
           <Notes>
             <ul>
               <li>This is our D3 code: Adds scales, axis, labels, etc</li>
-              <li>This can be basically any function you can come up with that take data and a d3 selection of an svg dom elemen</li>
+              <li>This is where you build your data vis</li>
+              <li>It can be any function that takes data and an svg</li>
+              <li>WALK THE PROPS</li>
               <li>In this case the each piece of data needs an x,y,z because we are plotting 3 points</li>
               <li>width and height are used to set the dimensions of the chart</li>
               <li>the labels are to visually identify data in the chart</li>
               <li>The Selection uses the D3 selection and provides reference to a svg where it builds the visualization</li>
+              <li>Thats all I am really going to show you right now otherwise this would be an intro to d3 talk</li>
             </ul>
           </Notes>
         </BetterSlide>
@@ -270,7 +291,9 @@ const Presentation = () => {
 
           <Notes>
             <ul>
-              <li>This is where the magic happens. Width and height make sense as you see them being set on the svg</li>
+              <li>This is where the magic happens</li>
+              <li>Walk the props</li>
+              <li>Width and height make sense as you see them being set on the svg</li>
               <li>whats happening:
                 <ul>
                   <li>takes a render function passed from the parent</li>
@@ -304,10 +327,12 @@ const Presentation = () => {
           <Notes>
             <ul>
               <li>Still finding a better name as its more intelligent than just mapping</li>
-              <li>This is a Rect component that will take data and correctly format it to be used by a d3 function</li>
-              <li>It takes an array of 3 stat key names that are used to map the date by the correct properties</li>
+              <li>This is a React component that will take data and correctly format it to be used by a d3 function</li>
+              <li>PROP: It takes an array with the name of 3 stats</li>
+              <li> It uses those map correct properties to our x,y,z</li>
               <li>It passes the function to our wrapper in the last slide; notice that the function gets the svg passed to it</li>
-              <li>That svg is used directly by d3 and d3; meaning d3 takes over rendering from here and does its stuff</li>
+              <li>You are probably wondering where does what render when?</li>
+              <li>That svg is used directly by d3; meaning d3 takes over rendering from here and does its stuff</li>
             </ul>
           </Notes>
         </BetterSlide>
@@ -345,13 +370,5 @@ const BetterSlide =  styled(Slide)`
   height: 100%;
   max-height: inherit;
 `
-
-
-
-
-
-
-
-
 
 export default Presentation
