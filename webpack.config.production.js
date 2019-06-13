@@ -6,9 +6,9 @@ module.exports = {
   mode: 'production',
   entry: ['@babel/polyfill', './index'],
   output: {
-    path: path.join(__dirname, 'docs'),
+    path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/docs/'
+    publicPath: '/dist/'
   },
   plugins: [
     new webpack.DefinePlugin({
