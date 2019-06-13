@@ -1,0 +1,25 @@
+type Props = {
+  data: [{
+    x: number,
+    y: number,
+    z: number,
+  }],
+  heightProp: number,
+  labelX: string,
+  labelY: string,
+  labelZ: string,
+  svgSelection: Selection,
+  widthProp: number,
+}
+
+export default function scatterPlot ({
+  data,
+  heightProp,
+  labelX,
+  labelY,
+  labelZ,
+  svgSelection,
+  widthProp,
+}: Props) {
+  // do d3 stuff here
+}

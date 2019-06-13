@@ -1,0 +1,25 @@
+type Props = {
+  width: number,
+  height: number,
+  render: Function,
+}
+
+const D3Wrapper = ({ width, height, render }: Props) => {
+  const refAnchor = useRef(null)
+
+  useEffect(() => {
+    const svg = select(refAnchor.current)
+    render(svg)
+  })
+
+  return (
+    <svg
+      className="d3-wrapper"
+      style={{ width, height }}
+      ref={refAnchor}
+      transform={`translate(${x}, ${y})`}
+    />
+  )
+}
+
+export default D3Wrapper

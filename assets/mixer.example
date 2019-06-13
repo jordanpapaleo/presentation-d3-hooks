@@ -1,0 +1,33 @@
+type Props = {
+  stats: Array<string>,
+  data: Array<{any}>,
+}
+
+const BaseballScatterPlot = ({ stats, data }: Props) => {
+  const [stat1, stat2, stat3] = stats // Name of stats props
+  const xAccessor = d => d[stat1]
+  const yAccessor = d => d[stat2]
+  const zAccessor = d => d[stat3]
+  // Map the data set into x, y, z properites
+  const mappedData = data.map((d) => ({
+    x: xAccessor(d),
+    y: yAccessor(d),
+    z: zAccessor(d),
+  }))
+
+  return (
+    <D3Wrapper
+      height={700}
+      width={700}
+      render={(svg) => scatter({
+        data: mappedData,
+        heightProp: 700,
+        labelX: stat1,
+        labelY: stat2,
+        labelZ: stat3,
+        svgSelection: svg,
+        widthProp: 700,
+      })}
+    />
+  )
+}
