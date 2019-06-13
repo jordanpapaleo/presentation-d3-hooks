@@ -40,7 +40,6 @@ require('normalize.css');
 const images = {
   scatter: require('../assets/scatter-plot.png'),
   city: require('../assets/city.jpg'),
-  markdown: require('../assets/markdown.png'),
   theoremHalmos: require('../assets/theorem-halmos.svg'),
   theoremLogoType: require('../assets/theorem-logotype.svg'),
 }
