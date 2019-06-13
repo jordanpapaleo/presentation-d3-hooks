@@ -1,6 +1,6 @@
 type Props = {
   stats: Array<string>,
-  data: Array<{any}>,
+  data: Array<{[statKey: string]: number}>,
 }
 
 const BaseballScatterPlot = ({ stats, data }: Props) => {

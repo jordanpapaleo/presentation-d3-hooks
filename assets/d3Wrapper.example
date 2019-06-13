@@ -17,7 +17,6 @@ const D3Wrapper = ({ width, height, render }: Props) => {
       className="d3-wrapper"
       style={{ width, height }}
       ref={refAnchor}
-      transform={`translate(${x}, ${y})`}
     />
   )
 }

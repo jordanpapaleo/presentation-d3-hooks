@@ -2,44 +2,30 @@ import React, { useState } from 'react'
 import styled from 'react-emotion'
 
 import {
-  Anim,
   Appear,
-  BlockQuote,
-  Cite,
   CodePane,
-  ComponentPlayground,
   Deck,
   Fill,
   Heading,
   Image,
-  Layout,
-  Link,
   ListItem,
+  Layout,
   List,
-  Markdown,
-  MarkdownSlides,
   Notes,
   Quote,
   Slide,
-  SlideSet,
-  TableBody,
-  TableHeader,
-  TableHeaderItem,
-  TableItem,
-  TableRow,
-  Table,
   Text,
-  GoToAction
 } from 'spectacle'
 
-import preloader from 'spectacle/lib/utils/preloader'
 import createTheme from 'spectacle/lib/themes/default'
+import preloader from 'spectacle/lib/utils/preloader'
 
-require('normalize.css');
+require('normalize.css')
 
 const images = {
-  scatter: require('../assets/scatter-plot.png'),
   city: require('../assets/city.jpg'),
+  galacticUnicorn: require('../assets/galactic-unicorn.jpg'),
+  scatter: require('../assets/scatter-plot.png'),
   theoremHalmos: require('../assets/theorem-halmos.svg'),
   theoremLogoType: require('../assets/theorem-logotype.svg'),
 }
@@ -48,6 +34,7 @@ preloader(images)
 
 const colors = {
   primary: 'rgb(221, 0, 34)',
+  // primary: '#1fe2df',
   secondary: '#1F2022',
   tertiary: '#FFFFFF',
   quaternary: '#CECECE'
@@ -63,6 +50,8 @@ const fonts = {
 }
 
 const theme = createTheme(colors, fonts)
+
+const codeTheme = 'dark'
 
 const Presentation = () => {
   return (
@@ -108,7 +97,7 @@ const Presentation = () => {
         </Slide>
 
         {/* OtherGoodQuestions */}
-         <Slide bgColor="tertiary" transition={['fade']}>
+         <Slide bgColor="quaternary" transition={['fade']}>
           <Heading size={3} textColor="primary" style={{marginBottom: 100}}>
             Other great questions with no answers
           </Heading>
@@ -138,7 +127,7 @@ const Presentation = () => {
         </Slide>
 
         {/* Goals */}
-        <Slide bgColor="tertiary" transition={['fade']}>
+        <Slide bgColor="quaternary" transition={['fade']}>
           <Heading size={2} style={{marginBottom: 50}} textColor="primary">
             My goals for you
           </Heading>
@@ -189,7 +178,7 @@ const Presentation = () => {
             General Setup
           </Heading>
           <div style={{marginLeft: 25, marginTop: 150}}>
-            <Text>So each of our data visualizations will have 3 parts:</Text>
+            <Text><strong>Each data visualization<br />will have 3 parts:</strong></Text>
 
             <List>
               <ListItem>
@@ -214,8 +203,25 @@ const Presentation = () => {
           </div>
         </Slide>
 
+       {/* Shameless plug */}
+        <Slide bgColor="secondary">
+          <Heading textColor="quaternary" size={5} caps style={{textAlign: 'left', marginBottom: 50}}>Shameless plug</Heading>
+          <Layout>
+            <Fill>
+                <Image src={images.galacticUnicorn} width={300} />
+            </Fill>
+            <Fill>
+              <div style={{width: 500, textAlign: 'left'}}>
+                <Quote textSize="1em">
+                  Follow your heart, let it guide you through the dark<br /><br />
+                  To the Land of Unicorns
+                </Quote>
+              </div>
+            </Fill>
+          </Layout>
+        </Slide>
         {/* D3RenderSlide */}
-        <BetterSlide bgColor="secondary">
+        <BetterSlide bgColor="quaternary">
           <Heading textColor="tertiary" size={2} style={{marginBottom: 50, textAlign: 'center'}}>
             D3 Render Function
           </Heading>
@@ -224,10 +230,10 @@ const Presentation = () => {
             <div style={{width: 600}}>
               <CodePane
                 lang="jsx"
-                theme="light"
-                source={require('raw-loader!../assets/d3RenderFunction.example')}
                 margin="20px auto"
                 overflow="scroll"
+                source={require('raw-loader!../assets/d3RenderFunction.example')}
+                theme={codeTheme}
               />
             </div>
           </div>
@@ -246,7 +252,7 @@ const Presentation = () => {
 
         {/* D3WrapperSlide */}
         <BetterSlide bgColor="secondary">
-          <Heading textColor="tertiary" size={2} style={{marginBottom: 50, textAlign: 'center'}}>
+          <Heading textColor="quaternary" size={2} style={{marginBottom: 50, textAlign: 'center'}}>
             D3 Wrapper
           </Heading>
 
@@ -254,25 +260,32 @@ const Presentation = () => {
             <div style={{width: 600}}>
               <CodePane
                 lang="jsx"
-                source={require('raw-loader!../assets/d3Wrapper.example')}
                 margin="20px auto"
-                theme="light"
                 overflow="overflow"
+                source={require('raw-loader!../assets/d3Wrapper.example')}
+                theme={codeTheme}
               />
             </div>
           </div>
 
           <Notes>
             <ul>
-              <li></li>
-              <li></li>
+              <li>This is where the magic happens. Width and height make sense as you see them being set on the svg</li>
+              <li>whats happening:
+                <ul>
+                  <li>takes a render function passed from the parent</li>
+                  <li>uses react hooks to get a reference to an svg</li>
+                  <li>calls the render function and provides and passes the svg to it</li>
+                </ul>
+                <li>Thats it</li>
+              </li>
             </ul>
           </Notes>
         </BetterSlide>
 
         {/* DataMapperSlide */}
         <BetterSlide bgColor="secondary">
-          <Heading textColor="tertiary" size={2} style={{marginBottom: 50, textAlign: 'center'}}>
+          <Heading textColor="quaternary" size={2} style={{marginBottom: 50, textAlign: 'center'}}>
             Data Mapper
           </Heading>
 
@@ -280,18 +293,21 @@ const Presentation = () => {
             <div style={{width: 700}}>
               <CodePane
                 lang="jsx"
-                source={require('raw-loader!../assets/mixer.example')}
                 margin="20px auto"
-                theme="light"
                 overflow="scroll"
+                source={require('raw-loader!../assets/mixer.example')}
+                theme={codeTheme}
               />
             </div>
           </div>
 
           <Notes>
             <ul>
-              <li></li>
-              <li></li>
+              <li>Still finding a better name as its more intelligent than just mapping</li>
+              <li>This is a Rect component that will take data and correctly format it to be used by a d3 function</li>
+              <li>It takes an array of 3 stat key names that are used to map the date by the correct properties</li>
+              <li>It passes the function to our wrapper in the last slide; notice that the function gets the svg passed to it</li>
+              <li>That svg is used directly by d3 and d3; meaning d3 takes over rendering from here and does its stuff</li>
             </ul>
           </Notes>
         </BetterSlide>
@@ -316,7 +332,9 @@ const Presentation = () => {
         <BetterSlide className="test">
           <Heading>Questions?</Heading>
           <Heading size={3}>HA! There's questions in lightning talks</Heading>
-          <Text>Thank you</Text>
+          <Text style={{textAlign: 'right', marginTop: 100}}>
+            - JP
+          </Text>
         </BetterSlide>
       </Deck>
     )
