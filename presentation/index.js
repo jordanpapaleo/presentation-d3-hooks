@@ -221,7 +221,7 @@ const Presentation = () => {
           </Layout>
         </Slide>
         {/* D3RenderSlide */}
-        <BetterSlide bgColor="quaternary">
+        <BetterSlide bgColor="secondary">
           <Heading textColor="tertiary" size={2} style={{marginBottom: 50, textAlign: 'center'}}>
             D3 Render Function
           </Heading>
@@ -331,7 +331,7 @@ const Presentation = () => {
         {/* QuestionsSlide */}
         <BetterSlide className="test">
           <Heading>Questions?</Heading>
-          <Heading size={3}>HA! There's questions in lightning talks</Heading>
+          <Heading size={3}>HA! There's no questions in lightning talks</Heading>
           <Text style={{textAlign: 'right', marginTop: 100}}>
             - JP
           </Text>
